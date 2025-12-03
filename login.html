@@ -22,6 +22,13 @@
             width: 100%;
             padding: 2rem;
         }
+        .login-container .form-label {
+            text-align: left;
+            display: block;
+        }
+        .login-container .form-control {
+            text-align: left;
+        }
         .btn-success {
             color: #ffffff !important;
         }
@@ -45,6 +52,17 @@
         }
         .social-login .btn {
             transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .login-remember-row {
+            column-gap: 0.75rem;
+        }
+        .login-remember-row .form-check {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            column-gap: 0.4rem;
+            margin-bottom: 0;
         }
         .social-login .btn-outline-primary {
             color: #0d6efd;
@@ -75,49 +93,12 @@
             color: #ffffff !important;
         }
         .divider {
-            margin: 1.5rem 0;
+            margin: 0.75rem 0;
         }
-        /* Dark Mode Toggle for Login/Register Pages */
-        .floating-dark-mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1050;
-            border: 1px solid #dee2e6;
-            background: #ffffff;
-            color: #212529;
-            padding: 0.75rem;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            transition: all 0.3s ease;
-            cursor: pointer;
+        .divider hr {
+            margin: 0;
         }
-        .floating-dark-mode-toggle:hover {
-            background-color: #f8f9fa;
-            border-color: #28a745;
-            color: #28a745;
-            transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        .floating-dark-mode-toggle i {
-            font-size: 1.25rem;
-            transition: transform 0.3s ease;
-        }
-        [data-theme="dark"] .floating-dark-mode-toggle {
-            background-color: #2d2d2d;
-            border-color: #6c757d;
-            color: #ffffff;
-        }
-        [data-theme="dark"] .floating-dark-mode-toggle:hover {
-            background-color: #495057;
-            border-color: #28a745;
-            color: #28a745;
-        }
+        /* Dark mode support (when enabled from other pages) */
         [data-theme="dark"] body {
             background-color: #1a1a1a;
         }
@@ -140,28 +121,85 @@
         [data-theme="dark"] .text-muted {
             color: #b0b0b0 !important;
         }
+
+        /* Responsive tweaks for better mobile/tablet layout */
+        @media (max-width: 1023px) {
+            body {
+                align-items: flex-start;
+            }
+            .login-container {
+                padding: 2rem 1.5rem;
+            }
+            .divider {
+                margin: 0.5rem 0;
+            }
+        }
+
+        @media (max-width: 767px) {
+            body {
+                padding-top: 1.5rem;
+            }
+            .login-container {
+                padding: 1.5rem 1rem;
+            }
+            .login-container .card {
+                max-width: 420px;
+                margin: 0 auto;
+            }
+            .login-container .card-body {
+                padding: 2rem 1.5rem;
+            }
+            .login-container .form-label {
+                text-align: left;
+                font-size: 0.95rem;
+            }
+            .login-container .form-control {
+                text-align: left;
+            }
+            h2.fw-bold {
+                font-size: 1.6rem;
+            }
+            .social-login .btn {
+                font-size: 0.9rem;
+            }
+            .divider {
+                margin: 0.35rem 0;
+            }
+            .divider span {
+                font-size: 0.85rem;
+            }
+            .text-center p {
+                font-size: 0.9rem;
+                white-space: normal;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+            .login-remember-row {
+                flex-wrap: nowrap;
+            }
+            .login-remember-row .form-check-label,
+            .login-remember-row a {
+                white-space: nowrap;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Dark Mode Toggle -->
-    <button class="floating-dark-mode-toggle" id="floatingThemeToggle" aria-label="Toggle dark mode">
-        <i class="fas fa-sun" id="floatingThemeIcon"></i>
-    </button>
     <!-- Login Form -->
     <div class="login-container">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-7">
+                <div class="col-lg-6 col-md-8">
                     <div class="card shadow-lg">
                         <div class="card-body p-5">
-                            <div class="text-center mb-4">
+                            <div class="mb-4">
                                 <a href="index.html" class="text-decoration-none">
                                     <h2 class="fw-bold text-success mb-0">
                                         <i class="fas fa-leaf"></i> EcoAware
                                     </h2>
                                 </a>
                             </div>
-                            <h2 class="fw-bold mb-4 text-center">Sign In</h2>
+                            <h2 class="fw-bold mb-4">Sign In</h2>
                             <form id="loginForm">
                                 <div class="mb-3">
                                     <label for="loginEmail" class="form-label">Email Address *</label>
@@ -171,8 +209,8 @@
                                     <label for="loginPassword" class="form-label">Password *</label>
                                     <input type="password" class="form-control" id="loginPassword" required>
                                 </div>
-                                <div class="mb-3 d-flex justify-content-between align-items-center">
-                                    <div class="form-check">
+                                <div class="mb-3 d-flex justify-content-between align-items-center login-remember-row">
+                                    <div class="form-check mb-0">
                                         <input type="checkbox" class="form-check-input" id="rememberMe">
                                         <label class="form-check-label" for="rememberMe" style="color: #28a745;">
                                             Remember me
@@ -180,10 +218,10 @@
                                     </div>
                                     <a href="#" class="text-decoration-none" style="color: #0d6efd;">Forgot Password?</a>
                                 </div>
-                                <div class="text-center">
+                                <div>
                                     <button type="submit" class="btn btn-success btn-lg w-100">Login</button>
                                 </div>
-                                <div class="divider my-4">
+                                <div class="divider">
                                     <div class="d-flex align-items-center">
                                         <hr class="flex-grow-1">
                                         <span class="px-3 text-muted">OR</span>
@@ -198,7 +236,7 @@
                                         <i class="fab fa-google me-2"></i> Continue with Google
                                     </button>
                                 </div>
-                                <div class="text-center mt-3">
+                                <div class="mt-3 text-center">
                                     <p class="mb-0">Don't have an account? <a href="register.html" class="text-success">Register here</a></p>
                                 </div>
                             </form>
@@ -212,50 +250,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Theme Toggle Functionality
-        (function() {
-            const themeToggle = document.getElementById('floatingThemeToggle');
-            const themeIcon = document.getElementById('floatingThemeIcon');
-            const html = document.documentElement;
-            
-            // Check for saved theme preference or default to light mode
-            const currentTheme = localStorage.getItem('theme') || 'light';
-            
-            // Function to update icon based on theme
-            function updateIcon(theme) {
-                if (theme === 'dark') {
-                    themeIcon.classList.remove('fa-sun');
-                    themeIcon.classList.add('fa-moon');
-                } else {
-                    themeIcon.classList.remove('fa-moon');
-                    themeIcon.classList.add('fa-sun');
-                }
-            }
-            
-            // Set initial theme
-            if (currentTheme === 'dark') {
-                html.setAttribute('data-theme', 'dark');
-                updateIcon('dark');
-            } else {
-                html.setAttribute('data-theme', 'light');
-                updateIcon('light');
-            }
-            
-            // Theme toggle event listener
-            themeToggle.addEventListener('click', function() {
-                const currentTheme = html.getAttribute('data-theme') || 'light';
-                if (currentTheme === 'dark') {
-                    html.setAttribute('data-theme', 'light');
-                    localStorage.setItem('theme', 'light');
-                    updateIcon('light');
-                } else {
-                    html.setAttribute('data-theme', 'dark');
-                    localStorage.setItem('theme', 'dark');
-                    updateIcon('dark');
-                }
-            });
-        })();
-        
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
