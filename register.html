@@ -181,8 +181,9 @@
                 font-size: 0.85rem;
             }
             .social-login .btn {
-                font-size: 0.9rem;
-                white-space: normal;
+                font-size: 0.85rem;
+                padding: 0.6rem 0.75rem;
+                white-space: nowrap !important;
             }
             .divider {
                 margin: 0.35rem 0;
@@ -266,13 +267,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 social-login">
-                                        <button type="button" class="btn btn-outline-primary w-100 mb-3" onclick="handleSocialLogin('facebook')">
-                                            <i class="fab fa-facebook-f me-2"></i> Continue with Facebook
-                                        </button>
-                                        <button type="button" class="btn btn-outline-danger w-100" onclick="handleSocialLogin('google')">
-                                            <i class="fab fa-google me-2"></i> Continue with Google
-                                        </button>
+                                    <div class="col-md-12">
+                                        <div class="social-login">
+                                            <button type="button" class="btn btn-outline-primary w-100 mb-3" onclick="handleSocialLogin('facebook')">
+                                                <i class="fab fa-facebook-f me-2"></i> Continue with Facebook
+                                            </button>
+                                            <button type="button" class="btn btn-outline-danger w-100" onclick="handleSocialLogin('google')">
+                                                <i class="fab fa-google me-2"></i> Continue with Google
+                                            </button>
+                                        </div>
                                     </div>
                                     <div class="col-md-12 text-center">
                                         <p class="mb-0">Already have an account? <a href="login.html" class="text-success">Login here</a></p>
