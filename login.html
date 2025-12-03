@@ -56,6 +56,12 @@
         }
         .login-remember-row {
             column-gap: 0.75rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            font-size: 0.85rem;
         }
         .login-remember-row .form-check {
             display: flex;
@@ -63,6 +69,14 @@
             align-items: center;
             column-gap: 0.4rem;
             margin-bottom: 0;
+        }
+        .login-remember-row .form-check-label {
+            display: inline-block;
+            margin-bottom: 0;
+            white-space: nowrap;
+        }
+        .login-remember-row a {
+            white-space: nowrap;
         }
         .social-login .btn-outline-primary {
             color: #0d6efd;
@@ -176,12 +190,17 @@
                 word-wrap: break-word;
                 overflow-wrap: break-word;
             }
+        }
+
+        /* Extra-small phones: stack "Forgot Password?" under Remember me */
+        @media (max-width: 360px) {
             .login-remember-row {
-                flex-wrap: nowrap;
+                flex-direction: column !important;
+                align-items: flex-start;
+                row-gap: 0.25rem;
             }
-            .login-remember-row .form-check-label,
             .login-remember-row a {
-                white-space: nowrap;
+                white-space: normal;
             }
         }
     </style>
@@ -215,7 +234,7 @@
                                     <div class="form-check mb-0">
                                         <input type="checkbox" class="form-check-input" id="rememberMe">
                                         <label class="form-check-label" for="rememberMe" style="color: #28a745;">
-                                            Remember me
+                                            Remember&nbsp;me
                                         </label>
                                     </div>
                                     <a href="#" class="text-decoration-none" style="color: #0d6efd;">Forgot Password?</a>
